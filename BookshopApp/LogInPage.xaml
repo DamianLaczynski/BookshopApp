@@ -3,15 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BookshopApp"
         xmlns:vm="clr-namespace:BookshopApp.ViewModel"
         mc:Ignorable="d"
-        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen"
         Title="Bookshop Login Page" Height="450" Width="800">
     <Window.Resources>
         <vm:LogInPageViewModel x:Key="logInPageViewModel"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource logInPageViewModel}">
+    <Window.DataContext>
+        <vm:LogInPageViewModel/>
+    </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="Esc" Command="{Binding Path=Close}"/>
+    </Window.InputBindings>
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -30,7 +35,7 @@
             <TextBox x:Name="loginBox" Text="{Binding LoginText, Mode=OneWayToSource}"/>
             <Label Content="Password" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <PasswordBox x:Name="passwordBox"/>
-            <Button x:Name="logInBt" Content="Log In" Margin="5" Click="logInBt_Click" />
+            <Button x:Name="logInBt" Content="Log In" Margin="5" Command="{Binding Path=LogIn}"/>
         </StackPanel>
 
     </Grid>
