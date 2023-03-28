@@ -22,16 +22,9 @@ namespace BookshopApp
     /// </summary>
     public partial class LogInPage : Window
     {
-        LogInPageViewModel logInPageVM;
         public LogInPage()
         {
             InitializeComponent();
-            logInPageVM = new();
-        }
-
-        private void logInBt_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -8,9 +8,34 @@ using System.Threading.Tasks;
 namespace BookshopApp.ViewModel
 {
     using Model;
+    using System.Windows;
+    using System.Windows.Input;
+
     public class LogInPageViewModel : ObservedObject
     {
         private LogInPage logInPage = new();
+
+        private ICommand? logInCommand;
+        private ICommand? closeCommand;
+
+        public ICommand LogIn
+        {
+            get 
+            {
+                if (logInCommand == null) logInCommand = new LogInCommand(this);
+                return logInCommand;
+            }
+        }
+
+        public ICommand Close
+        {
+            get
+            {
+                if (closeCommand == null) closeCommand = new CloseCommand(this);
+                return closeCommand;
+            }
+        }
+
         public string? LoginText
         {
             get
@@ -31,7 +56,15 @@ namespace BookshopApp.ViewModel
             }
         }
 
-        //TODO binding password
-        //TODO binding LogIn button method
+        public void startLogIn()
+        {
+            MessageBox.Show("Give me a moment");
+            logInPage.logIn();
+        }
+        public void windowClose()
+        {
+            MessageBox.Show("Closing");
+            //TODO
+        }
     }
 }

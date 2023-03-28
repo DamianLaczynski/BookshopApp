@@ -11,8 +11,14 @@ namespace BookshopApp.Model
     public class LogInPage
     {
         public string? LoginText { get; set; }
-        public SecureString? SecurePassword { private get; set; }
+        public SecureString SecurePassword { private get; set; } = new SecureString();
 
         public LogInPage() {   }
+
+        public void logIn()
+        {
+            //TODO
+            SecurePassword.Clear();
+        }
     }
 }
